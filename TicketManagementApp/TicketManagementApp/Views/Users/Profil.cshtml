@@ -1,0 +1,682 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model TicketManagementApp.Models.ViewModels.ProfilViewModel;
+@inject UserManager<TicketManagementApp.Models.ApplicationUser> UserManager
+@inject TicketManagementApp.Data.ApplicationDbContext Context
+
+@{
+    ViewData["Title"] = "My Profile";
+    var userId = Model.FullName;
+
+    // Récupérer les tickets créés par l'utilisateur
+    var createdTickets = Model.CreatedTickets.ToList();
+
+    // Récupérer les tickets assignés à l'utilisateur
+    var assignedTickets = Model.AssignedTickets.ToList();
+}
+
+<style>
+    .profile-header {
+        margin-bottom: 2rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0 0 0.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .page-subtitle {
+        color: #64748b;
+        font-size: 1rem;
+    }
+
+    .profile-container {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .profile-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        height: fit-content;
+    }
+
+    .profile-banner {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        height: 120px;
+        position: relative;
+    }
+
+    .profile-avatar-container {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #6366f1;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        border: 5px solid white;
+    }
+
+    .profile-info {
+        padding: 4rem 2rem 2rem;
+        text-align: center;
+    }
+
+    .profile-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+    }
+
+    .profile-email {
+        color: #64748b;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .profile-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+        background: #f8fafc;
+        border-radius: 12px;
+        margin-top: 1.5rem;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #6366f1;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .logout-btn {
+        width: 100%;
+        padding: 0.875rem;
+        background: #fee2e2;
+        color: #dc2626;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+        .logout-btn:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .tickets-section {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #f1f5f9;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .badge-count {
+        background: #6366f1;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #f1f5f9;
+    }
+
+    .tab {
+        padding: 0.75rem 1.5rem;
+        background: transparent;
+        border: none;
+        border-bottom: 3px solid transparent;
+        color: #64748b;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .tab:hover {
+            color: #6366f1;
+            background: #f8fafc;
+        }
+
+        .tab.active {
+            color: #6366f1;
+            border-bottom-color: #6366f1;
+        }
+
+    .tab-content {
+        display: none;
+    }
+
+        .tab-content.active {
+            display: block;
+        }
+
+    .ticket-item {
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+
+        .ticket-item:hover {
+            border-color: #6366f1;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+        }
+
+    .ticket-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 0.75rem;
+    }
+
+    .ticket-title-text {
+        font-weight: 700;
+        color: #1e293b;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .ticket-id {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        font-weight: 600;
+    }
+
+    .ticket-badges {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .ticket-description {
+        color: #64748b;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .ticket-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.75rem;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .ticket-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .ticket-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn-action {
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    .btn-view {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+        .btn-view:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .status-1 {
+        background: #dcfce7;
+        color: #16a34a;
+    }
+
+    .status-2 {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+    .status-3 {
+        background: #fed7aa;
+        color: #f97316;
+    }
+
+    .status-4 {
+        background: #fee2e2;
+        color: #ef4444;
+    }
+
+    .status-5 {
+        background: #fecaca;
+        color: #dc2626;
+    }
+
+    .category-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 2px solid;
+    }
+
+    .category-bug {
+        background: #fee2e2;
+        color: #dc2626;
+        border-color: #fca5a5;
+    }
+
+    .category-improvement {
+        background: #dbeafe;
+        color: #2563eb;
+        border-color: #93c5fd;
+    }
+
+    .category-access {
+        background: #fef3c7;
+        color: #d97706;
+        border-color: #fcd34d;
+    }
+
+    .category-feature {
+        background: #e9d5ff;
+        color: #9333ea;
+        border-color: #d8b4fe;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 3rem 2rem;
+    }
+
+    .empty-icon {
+        font-size: 3rem;
+        color: #cbd5e1;
+        margin-bottom: 1rem;
+    }
+
+    .empty-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #475569;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-text {
+        color: #94a3b8;
+    }
+
+
+
+    }
+</style>
+
+<div class="profile-header">
+    <h1 class="page-title">
+        <i class="fas fa-user-circle"></i>
+        My Profile
+    </h1>
+    <p class="page-subtitle">Manage your account and view your tickets</p>
+</div>
+
+<div class="profile-container">
+    <!-- Profile Card -->
+    <div class="profile-card">
+        <div class="profile-banner">
+            <div class="profile-avatar-container">
+                <div class="profile-avatar">
+                    @Model.FullName.Substring(0, 1).ToUpper()
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <h2 class="profile-name">@Model.FullName</h2>
+            <div class="profile-email">
+                <i class="fas fa-envelope"></i>
+                @Model.Email
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-value">@createdTickets.Count</span>
+                    <span class="stat-label">Created</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">@assignedTickets.Count</span>
+                    <span class="stat-label">Assigned</span>
+                </div>
+            </div>
+
+            <form asp-action="Logout" asp-controller="Users" method="post">
+                <button type="submit" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tickets Section -->
+    <div class="tickets-section">
+        <div class="section-header">
+            <h3 class="section-title">
+                <i class="fas fa-ticket-alt"></i>
+                My Tickets
+            </h3>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('created')">
+                <i class="fas fa-plus-circle"></i>
+                Created by Me
+                <span class="badge-count">@createdTickets.Count</span>
+            </button>
+            <button class="tab" onclick="switchTab('assigned')">
+                <i class="fas fa-user-check"></i>
+                Assigned to Me
+                <span class="badge-count">@assignedTickets.Count</span>
+            </button>
+        </div>
+
+        <!-- Created Tickets Tab -->
+        <div id="created-tab" class="tab-content active">
+            @if (createdTickets.Any())
+            {
+                foreach (var ticket in createdTickets)
+                {
+                    <div class="ticket-item">
+                        <div class="ticket-header">
+                            <div>
+                                <div class="ticket-title-text">@ticket.Title</div>
+                                <div class="ticket-id">TICKET #@ticket.Id</div>
+                            </div>
+                            <div class="ticket-badges">
+                                @{
+                                    var statusValue = ticket.Status ?? "1";
+                                    var statusInt = int.TryParse(statusValue, out var parsed) ? parsed : 1;
+                                    var statusClass = $"status-{statusInt}";
+                                    var statusText = statusInt switch
+                                    {
+                                        1 => "Low",
+                                        2 => "Medium",
+                                        3 => "High",
+                                        4 => "Urgent",
+                                        5 => "Critical",
+                                        _ => "Low"
+                                    };
+
+                                    var categoryClass = ticket.Category?.ToLower() switch
+                                    {
+                                        "bug" => "category-bug",
+                                        "improvement" => "category-improvement",
+                                        "access" => "category-access",
+                                        "feature" => "category-feature",
+                                        _ => "category-bug"
+                                    };
+                                    var categoryIcon = ticket.Category?.ToLower() switch
+                                    {
+                                        "bug" => "fa-bug",
+                                        "improvement" => "fa-arrow-up",
+                                        "access" => "fa-key",
+                                        "feature" => "fa-star",
+                                        _ => "fa-tag"
+                                    };
+                                }
+                                <span class="status-badge @statusClass">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                                    @statusText
+                                </span>
+                                <span class="category-badge @categoryClass">
+                                    <i class="fas @categoryIcon"></i>
+                                    @ticket.Category
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-description">@ticket.Description</div>
+
+                        <div class="ticket-footer">
+                            <div class="ticket-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar-alt"></i>
+                                    @ticket.CreatedAt.ToString("MMM dd, yyyy")
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-user-check"></i>
+                                    @(ticket.AssignedToUser?.UserName ?? "Unassigned")
+                                </div>
+                            </div>
+                            <div class="ticket-actions">
+                                <a asp-controller="Tickets" asp-action="Details" asp-route-id="@ticket.Id" class="btn-action btn-view">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h4 class="empty-title">No tickets created yet</h4>
+                    <p class="empty-text">You haven't created any tickets yet</p>
+                </div>
+            }
+        </div>
+
+        <!-- Assigned Tickets Tab -->
+        <div id="assigned-tab" class="tab-content">
+            @if (assignedTickets.Any())
+            {
+                foreach (var ticket in assignedTickets)
+                {
+                    <div class="ticket-item">
+                        <div class="ticket-header">
+                            <div>
+                                <div class="ticket-title-text">@ticket.Title</div>
+                                <div class="ticket-id">TICKET #@ticket.Id</div>
+                            </div>
+                            <div class="ticket-badges">
+                                @{
+                                    var statusValue = ticket.Status ?? "1";
+                                    var statusInt = int.TryParse(statusValue, out var parsed) ? parsed : 1;
+                                    var statusClass = $"status-{statusInt}";
+                                    var statusText = statusInt switch
+                                    {
+                                        1 => "Low",
+                                        2 => "Medium",
+                                        3 => "High",
+                                        4 => "Urgent",
+                                        5 => "Critical",
+                                        _ => "Low"
+                                    };
+
+                                    var categoryClass = ticket.Category?.ToLower() switch
+                                    {
+                                        "bug" => "category-bug",
+                                        "improvement" => "category-improvement",
+                                        "access" => "category-access",
+                                        "feature" => "category-feature",
+                                        _ => "category-bug"
+                                    };
+                                    var categoryIcon = ticket.Category?.ToLower() switch
+                                    {
+                                        "bug" => "fa-bug",
+                                        "improvement" => "fa-arrow-up",
+                                        "access" => "fa-key",
+                                        "feature" => "fa-star",
+                                        _ => "fa-tag"
+                                    };
+                                }
+                                <span class="status-badge @statusClass">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                                    @statusText
+                                </span>
+                                <span class="category-badge @categoryClass">
+                                    <i class="fas @categoryIcon"></i>
+                                    @ticket.Category
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-description">@ticket.Description</div>
+
+                        <div class="ticket-footer">
+                            <div class="ticket-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar-alt"></i>
+                                    @ticket.CreatedAt.ToString("MMM dd, yyyy")
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-user"></i>
+                                    Created by @(ticket.CreatedByUser?.UserName ?? "Unknown")
+                                </div>
+                            </div>
+                            <div class="ticket-actions">
+                                <a asp-controller="Tickets" asp-action="Details" asp-route-id="@ticket.Id" class="btn-action btn-view">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fas fa-user-slash"></i>
+                    </div>
+                    <h4 class="empty-title">No tickets assigned to you</h4>
+                    <p class="empty-text">You don't have any tickets assigned yet</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function switchTab(tabName) {
+        // Retirer la classe active de tous les tabs et contents
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+        // Ajouter la classe active au tab et content sélectionné
+        event.target.closest('.tab').classList.add('active');
+        document.getElementById(tabName + '-tab').classList.add('active');
+    }
+</script>

@@ -1,0 +1,339 @@
+﻿@model IEnumerable<TicketManagementApp.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Tickets Management";
+}
+
+<style>
+    /* --- HEADER --- */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .btn-create {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: .3s;
+        box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+    }
+
+        .btn-create:hover {
+            transform: translateY(-2px);
+        }
+
+    /* --- TABLE --- */
+    .tickets-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .tickets-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+        .tickets-table thead {
+            background: #f8fafc;
+        }
+
+        .tickets-table th {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #475569;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .tickets-table td {
+            padding: 1.25rem 1.5rem;
+        }
+
+    /* --- BADGE STATUS --- */
+    .status-badge {
+        padding: .5rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: .875rem;
+    }
+
+    .status-open {
+        background: #dcfce7;
+        color: #16a34a;
+    }
+
+    .status-inprogress {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+    .status-resolved {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+    .status-closed {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+    /* --- BADGE CATEGORY --- */
+    .category-badge {
+        padding: .4rem .75rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: .8rem;
+        border: 2px solid;
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+    }
+
+    .category-bug {
+        background: #fee2e2;
+        color: #dc2626;
+        border-color: #fca5a5;
+    }
+
+    .category-improvement {
+        background: #dbeafe;
+        color: #2563eb;
+        border-color: #93c5fd;
+    }
+
+    .category-access {
+        background: #fef3c7;
+        color: #d97706;
+        border-color: #fcd34d;
+    }
+
+    .category-feature {
+        background: #e9d5ff;
+        color: #9333ea;
+        border-color: #d8b4fe;
+    }
+
+    /* --- BADGE URGENCY --- */
+    .urgency-badge {
+        padding: .5rem 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: .85rem;
+    }
+
+    .urgency-low {
+        background: #d1fae5;
+        color: #047857;
+    }
+
+    .urgency-medium {
+        background: #fef9c3;
+        color: #a16207;
+    }
+
+    .urgency-high {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .urgency-critical {
+        background: #f87171;
+        color: white;
+    }
+
+    /* --- USERS --- */
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: linear-gradient(135deg,#6366f1,#8b5cf6);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- ACTION BUTTONS --- */
+    .actions-cell {
+        display: flex;
+        gap: .5rem;
+    }
+
+    .btn-action {
+        padding: .5rem .75rem;
+        border-radius: 6px;
+        font-size: .875rem;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: .3rem;
+    }
+
+    .btn-view {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+    .btn-edit {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+    .btn-delete {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+</style>
+
+<div class="page-header">
+    <h1 class="page-title"><i class="fas fa-ticket-alt"></i> Tickets Management</h1>
+    <a asp-action="Create" class="btn-create"><i class="fas fa-plus"></i> Create Ticket</a>
+</div>
+
+<div class="tickets-card">
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="tickets-table">
+                <thead>
+                    <tr>
+                        <th>Ticket</th>
+                        <th>Status</th>
+                        <th>Category</th>
+                        <th>Urgency</th>
+                        <th>Created By</th>
+                        <th>Assigned To</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var urgencyName = item.GetUrgencyLevelName();
+                        var urgencyClass = item.GetUrgencyClass();
+
+                        <tr>
+                            <td>
+                                <div class="ticket-title">@item.Title</div>
+                                <div class="ticket-description">@item.Description</div>
+                            </td>
+
+                            <td>
+                                @{
+                                    var statusClass = item.Status?.ToLower() switch
+                                    {
+                                        "open" => "status-open",
+                                        "inprogress" => "status-inprogress",
+                                        "resolved" => "status-resolved",
+                                        "closed" => "status-closed",
+                                        _ => "status-open"
+                                    };
+                                }
+                                <span class="status-badge @statusClass">@item.Status</span>
+                            </td>
+
+                            <td>
+                                @{
+                                    var categoryClass = item.Category?.ToLower() switch
+                                    {
+                                        "bug" => "category-bug",
+                                        "improvement" => "category-improvement",
+                                        "access" => "category-access",
+                                        "feature" => "category-feature",
+                                        _ => "category-bug"
+                                    };
+                                    var categoryIcon = item.Category?.ToLower() switch
+                                    {
+                                        "bug" => "fa-bug",
+                                        "improvement" => "fa-arrow-up",
+                                        "access" => "fa-key",
+                                        "feature" => "fa-star",
+                                        _ => "fa-tag"
+                                    };
+                                }
+                                <span class="category-badge @categoryClass">
+                                    <i class="fas @categoryIcon"></i> @item.Category
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="urgency-badge @urgencyClass">
+                                    @urgencyName
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        @(item.CreatedByUser?.UserName?.Substring(0, 1).ToUpper() ?? "?")
+                                    </div>
+                                    <span>@(item.CreatedByUser?.FullName ?? "Unknown")</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        @(item.AssignedToUser?.UserName?.Substring(0, 1).ToUpper() ?? "?")
+                                    </div>
+                                    <span>@(item.AssignedToUser?.FullName ?? "Unassigned")</span>
+                                </div>
+                            </td>
+
+                            <td>@item.CreatedAt.ToString("MMM dd, yyyy")</td>
+
+                            <td>
+                                <div class="actions-cell">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn-action btn-view">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    
+                                    @if (item.CreatedByUserId == ViewBag.User.Id || ViewBag.Admin)
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-action btn-edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-action btn-delete">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="empty-state">
+            <i class="fas fa-inbox empty-icon"></i>
+            <h3>No tickets yet</h3>
+            <a asp-action="Create" class="btn-create"><i class="fas fa-plus"></i> Create Ticket</a>
+        </div>
+    }
+</div>

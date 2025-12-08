@@ -1,0 +1,551 @@
+﻿@model TicketManagementApp.Models.Ticket
+
+@{
+    ViewData["Title"] = "Ticket Details";
+}
+
+<style>
+    .page-header {
+        margin-bottom: 2rem;
+    }
+
+    . breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #64748b;
+        font-size: 0. 875rem;
+        margin-bottom: 1rem;
+    }
+
+        .breadcrumb-nav a {
+            color: #6366f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .breadcrumb-nav a:hover {
+                color: #4f46e5;
+            }
+
+    . page-title-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+    }
+
+    .ticket-actions {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .details-container {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 2rem;
+    }
+
+    .main-details {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    . ticket-header {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        padding: 2rem;
+        color: white;
+    }
+
+    .ticket-id {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .ticket-title-large {
+        font-size: 1. 75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .ticket-meta {
+        display: flex;
+        gap: 1. 5rem;
+        font-size: 0.9rem;
+        opacity: 0.95;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    . ticket-body {
+        padding: 2rem;
+    }
+
+    .detail-section {
+        margin-bottom: 2rem;
+    }
+
+    .section-label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.75rem;
+    }
+
+    .section-content {
+        font-size: 1rem;
+        color: #1e293b;
+        line-height: 1.6;
+    }
+
+    .description-box {
+        background: #f8fafc;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+    }
+
+    .sidebar-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 1.5rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+    }
+
+    .sidebar-section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid #f1f5f9;
+    }
+
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+    .sidebar-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.75rem;
+    }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .status-open {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+    .status-inprogress {
+        background: #fef3c7;
+        color: #f59e0b;
+    }
+
+    .status-resolved {
+        background: #d1fae5;
+        color: #10b981;
+    }
+
+    .status-closed {
+        background: #f3f4f6;
+        color: #6b7280;
+    }
+
+    .urgency-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 10px;
+        font-size: 0. 95rem;
+        font-weight: 600;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .urgency-1 {
+        background: #dcfce7;
+        color: #16a34a;
+    }
+
+    .urgency-2 {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+    .urgency-3 {
+        background: #fed7aa;
+        color: #f97316;
+    }
+
+    . urgency-4 {
+        background: #fee2e2;
+        color: #ef4444;
+    }
+
+    .urgency-5 {
+        background: #fecaca;
+        color: #dc2626;
+    }
+
+    .category-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border: 2px solid;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .category-bug {
+        background: #fee2e2;
+        color: #dc2626;
+        border-color: #fca5a5;
+    }
+
+    .category-improvement {
+        background: #dbeafe;
+        color: #2563eb;
+        border-color: #93c5fd;
+    }
+
+    .category-access {
+        background: #fef3c7;
+        color: #d97706;
+        border-color: #fcd34d;
+    }
+
+    .category-feature {
+        background: #e9d5ff;
+        color: #9333ea;
+        border-color: #d8b4fe;
+    }
+
+    .user-card {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: #f8fafc;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+    }
+
+    . user-avatar-large {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+
+    .user-info {
+        flex: 1;
+    }
+
+    .user-name {
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.15rem;
+    }
+
+    . user-role {
+        font-size: 0.75rem;
+        color: #64748b;
+    }
+
+    .btn {
+        padding: 0. 75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        justify-content: center;
+    }
+
+    .btn-edit {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+        .btn-edit:hover {
+            background: #d97706;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .btn-delete {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+        .btn-delete:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .btn-back {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+        .btn-back:hover {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+    . action-buttons {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1. 5rem;
+    }
+
+    @@media (max-width: 1024px) {
+        .details-container {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar-card {
+            position: static;
+        }
+
+        .page-title-container {
+            flex-direction: column;
+            align-items: start;
+        }
+    }
+</style>
+
+<div class="page-header">
+    <nav class="breadcrumb-nav">
+        <a asp-action="Index">
+            <i class="fas fa-ticket-alt"></i> Tickets
+        </a>
+        <span>/</span>
+        <span>Details</span>
+    </nav>
+    <div class="page-title-container">
+        <h1 class="page-title">
+            <i class="fas fa-file-alt"></i>
+            Ticket Details
+        </h1>
+    </div>
+</div>
+
+<div class="details-container">
+    <div class="main-details">
+        <div class="ticket-header">
+            <div class="ticket-id">TICKET #@Model.Id</div>
+            <h2 class="ticket-title-large">@Model.Title</h2>
+            <div class="ticket-meta">
+                <div class="meta-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Created @Model.CreatedAt. ToString("MMM dd, yyyy")</span>
+                </div>
+                <div class="meta-item">
+                    <i class="far fa-clock"></i>
+                    <span>@Model.CreatedAt.ToString("hh:mm tt")</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ticket-body">
+            <div class="detail-section">
+                <div class="section-label">
+                    <i class="fas fa-align-left"></i> Description
+                </div>
+                <div class="description-box">
+                    <div class="section-content">
+                        @if (string.IsNullOrWhiteSpace(Model.Description))
+                        {
+                            <em style="color: #94a3b8;">No description provided</em>
+                        }
+                        else
+                        {
+                            @Model.Description
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-card">
+        <div class="sidebar-section">
+            <div class="sidebar-label">
+                <i class="fas fa-info-circle"></i> Status
+            </div>
+            @{
+                var statusClass = Model.Status?.ToLower() switch
+                {
+                    "open" => "status-open",
+                    "inprogress" => "status-inprogress",
+                    "resolved" => "status-resolved",
+                    "closed" => "status-closed",
+                    _ => "status-open"
+                };
+                var statusText = Model.Status switch
+                {
+                    "Open" => "Open",
+                    "InProgress" => "In Progress",
+                    "Resolved" => "Resolved",
+                    "Closed" => "Closed",
+                    _ => "Open"
+                };
+                var statusIcon = Model.Status?.ToLower() switch
+                {
+                    "open" => "fa-folder-open",
+                    "inprogress" => "fa-spinner",
+                    "resolved" => "fa-check-circle",
+                    "closed" => "fa-times-circle",
+                    _ => "fa-folder-open"
+                };
+            }
+            <span class="status-badge @statusClass">
+                <i class="fas @statusIcon"></i>
+                @statusText
+            </span>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-label">
+                <i class="fas fa-exclamation-triangle"></i> Urgency Level
+            </div>
+            @{
+                var urgencyClass = $"urgency-{Model.UrgencyLevel}";
+                var urgencyText = Model.GetUrgencyLevelName();
+            }
+            <span class="urgency-badge @urgencyClass">
+                <i class="fas fa-circle" style="font-size: 0.6rem;"></i>
+                @urgencyText
+            </span>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-label">
+                <i class="fas fa-tag"></i> Category
+            </div>
+            @{
+                var categoryClass = Model.Category?.ToLower() switch
+                {
+                    "bug" => "category-bug",
+                    "improvement" => "category-improvement",
+                    "access" => "category-access",
+                    "feature" => "category-feature",
+                    _ => "category-bug"
+                };
+                var categoryIcon = Model.Category?.ToLower() switch
+                {
+                    "bug" => "fa-bug",
+                    "improvement" => "fa-arrow-up",
+                    "access" => "fa-key",
+                    "feature" => "fa-star",
+                    _ => "fa-tag"
+                };
+            }
+            <span class="category-badge @categoryClass">
+                <i class="fas @categoryIcon"></i>
+                @Model.Category
+            </span>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-label">
+                <i class="fas fa-user"></i> Created By
+            </div>
+            <div class="user-card">
+                <div class="user-avatar-large">
+                    @(Model.CreatedByUser?.UserName?.Substring(0, 1).ToUpper() ?? "? ")
+                </div>
+                <div class="user-info">
+                    <div class="user-name">@(Model.CreatedByUser?.UserName ?? "Unknown User")</div>
+                    <div class="user-role">Creator</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-label">
+                <i class="fas fa-user-check"></i> Assigned To
+            </div>
+            <div class="user-card">
+                <div class="user-avatar-large">
+                    @(Model.AssignedToUser?.UserName?.Substring(0, 1).ToUpper() ?? "? ")
+                </div>
+                <div class="user-info">
+                    <div class="user-name">@(Model.AssignedToUser?.UserName ?? "Unassigned")</div>
+                    <div class="user-role">Assignee</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-edit" style="flex: 1;">
+                <i class="fas fa-edit"></i>
+                Edit
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-delete" style="flex: 1;">
+                <i class="fas fa-trash"></i>
+                Delete
+            </a>
+        </div>
+
+        <div style="margin-top: 0.75rem;">
+            <a asp-action="Index" class="btn btn-back" style="width: 100%;">
+                <i class="fas fa-arrow-left"></i>
+                Back to List
+            </a>
+        </div>
+    </div>
+</div>

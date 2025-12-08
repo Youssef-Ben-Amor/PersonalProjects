@@ -1,0 +1,561 @@
+﻿@model TicketManagementApp.Models.Ticket
+
+@{
+    ViewData["Title"] = "Create Ticket";
+}
+
+<style>
+    .page-header {
+        margin-bottom: 2rem;
+    }
+
+    .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #64748b;
+        font-size: 0. 875rem;
+        margin-bottom: 1rem;
+    }
+
+        .breadcrumb-nav a {
+            color: #6366f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .breadcrumb-nav a:hover {
+                color: #4f46e5;
+            }
+
+    . page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .form-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        max-width: 800px;
+    }
+
+    . form-section {
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #f1f5f9;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+        . form-label .required {
+            color: #ef4444;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0. 3s ease;
+        background: #f8fafc;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+    textarea. form-control {
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    .status-selector {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+    }
+
+    .status-option {
+        position: relative;
+    }
+
+        .status-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+    .status-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0. 3s ease;
+        background: #f8fafc;
+    }
+
+    .status-option input:checked + .status-label {
+        border-color: #6366f1;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    }
+
+    .status-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    . status-open . status-icon {
+        color: #3b82f6;
+    }
+
+    .status-inprogress .status-icon {
+        color: #f59e0b;
+    }
+
+    .status-resolved .status-icon {
+        color: #10b981;
+    }
+
+    .status-closed .status-icon {
+        color: #6b7280;
+    }
+
+    .status-name {
+        font-weight: 600;
+        color: #1e293b;
+        font-size: 0.9rem;
+    }
+
+    .category-selector {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .category-option {
+        position: relative;
+    }
+
+        .category-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+    .category-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1. 25rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+    }
+
+    .category-option input:checked + .category-label {
+        border-color: #6366f1;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0. 1) 100%);
+    }
+
+    .category-icon {
+        font-size: 2rem;
+        margin-bottom: 0.25rem;
+    }
+
+    . category-bug .category-icon {
+        color: #dc2626;
+    }
+
+    .category-improvement .category-icon {
+        color: #2563eb;
+    }
+
+    .category-access .category-icon {
+        color: #d97706;
+    }
+
+    .category-feature .category-icon {
+        color: #9333ea;
+    }
+
+    .category-name {
+        font-weight: 600;
+        color: #1e293b;
+        font-size: 0.9rem;
+    }
+
+    . urgency-slider-container {
+        padding: 1rem 0;
+    }
+
+    . urgency-display {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .urgency-label {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .urgency-level {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0. 9rem;
+    }
+
+    .slider-track {
+        position: relative;
+        height: 40px;
+        background: linear-gradient(to right, #22c55e 0%, #eab308 25%, #f97316 50%, #ef4444 75%, #dc2626 100%);
+        border-radius: 20px;
+        margin-bottom: 0.5rem;
+    }
+
+    .urgency-slider {
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        top: 0;
+        left: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        outline: none;
+        margin: 0;
+        cursor: pointer;
+    }
+
+        .urgency-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 4px solid #6366f1;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+            .urgency-slider::-webkit-slider-thumb:hover {
+                transform: scale(1.1);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            }
+
+        .urgency-slider::-moz-range-thumb {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 4px solid #6366f1;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+    .urgency-markers {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid #f1f5f9;
+    }
+
+    .btn {
+        padding: 0.875rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0. 3s ease;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0. 3);
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+    .btn-secondary {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+    .text-danger {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: block;
+    }
+
+    .alert-danger {
+        background: #fee2e2;
+        border: 2px solid #fca5a5;
+        color: #dc2626;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="page-header">
+    <nav class="breadcrumb-nav">
+        <a asp-action="Index">
+            <i class="fas fa-ticket-alt"></i> Tickets
+        </a>
+        <span>/</span>
+        <span>Create New</span>
+    </nav>
+    <h1 class="page-title">
+        <i class="fas fa-plus-circle"></i>
+        Create New Ticket
+    </h1>
+</div>
+
+<div class="form-card">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert-danger"></div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle"></i> Ticket Information
+            </h2>
+
+            <div class="form-group">
+                <label asp-for="Title" class="form-label">
+                    Title <span class="required">*</span>
+                </label>
+                <input asp-for="Title" class="form-control" placeholder="Enter ticket title..." />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="form-label">
+                    Description
+                </label>
+                <textarea asp-for="Description" class="form-control" placeholder="Describe the issue or request in detail..."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle"></i> Status
+            </h2>
+            <div class="status-selector">
+                <div class="status-option status-open">
+                    <input type="radio" asp-for="Status" value="Open" id="status-open" checked />
+                    <label for="status-open" class="status-label">
+                        <i class="fas fa-folder-open status-icon"></i>
+                        <span class="status-name">Open</span>
+                    </label>
+                </div>
+                <div class="status-option status-inprogress">
+                    <input type="radio" asp-for="Status" value="InProgress" id="status-inprogress" />
+                    <label for="status-inprogress" class="status-label">
+                        <i class="fas fa-spinner status-icon"></i>
+                        <span class="status-name">In Progress</span>
+                    </label>
+                </div>
+                <div class="status-option status-resolved">
+                    <input type="radio" asp-for="Status" value="Resolved" id="status-resolved" />
+                    <label for="status-resolved" class="status-label">
+                        <i class="fas fa-check-circle status-icon"></i>
+                        <span class="status-name">Resolved</span>
+                    </label>
+                </div>
+                <div class="status-option status-closed">
+                    <input type="radio" asp-for="Status" value="Closed" id="status-closed" />
+                    <label for="status-closed" class="status-label">
+                        <i class="fas fa-times-circle status-icon"></i>
+                        <span class="status-name">Closed</span>
+                    </label>
+                </div>
+            </div>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-tag"></i> Category
+            </h2>
+            <div class="category-selector">
+                <div class="category-option category-bug">
+                    <input type="radio" asp-for="Category" value="Bug" id="cat-bug" />
+                    <label for="cat-bug" class="category-label">
+                        <i class="fas fa-bug category-icon"></i>
+                        <span class="category-name">Bug</span>
+                    </label>
+                </div>
+                <div class="category-option category-improvement">
+                    <input type="radio" asp-for="Category" value="Improvement" id="cat-improvement" />
+                    <label for="cat-improvement" class="category-label">
+                        <i class="fas fa-arrow-up category-icon"></i>
+                        <span class="category-name">Improvement</span>
+                    </label>
+                </div>
+                <div class="category-option category-access">
+                    <input type="radio" asp-for="Category" value="Access" id="cat-access" />
+                    <label for="cat-access" class="category-label">
+                        <i class="fas fa-key category-icon"></i>
+                        <span class="category-name">Access</span>
+                    </label>
+                </div>
+                <div class="category-option category-feature">
+                    <input type="radio" asp-for="Category" value="Feature" id="cat-feature" />
+                    <label for="cat-feature" class="category-label">
+                        <i class="fas fa-star category-icon"></i>
+                        <span class="category-name">Feature</span>
+                    </label>
+                </div>
+            </div>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-exclamation-triangle"></i> Urgency Level
+            </h2>
+            <div class="urgency-slider-container">
+                <div class="urgency-display">
+                    <span class="urgency-label">Priority:</span>
+                    <span class="urgency-level" id="urgencyDisplay">Low</span>
+                </div>
+                <div class="slider-track">
+                    <input type="range" asp-for="UrgencyLevel" class="urgency-slider" id="urgencySlider"
+                           min="1" max="5" value="1" step="1" />
+                </div>
+                <div class="urgency-markers">
+                    <span>Low</span>
+                    <span>Medium</span>
+                    <span>High</span>
+                    <span>Urgent</span>
+                    <span>Critical</span>
+                </div>
+            </div>
+            <span asp-validation-for="UrgencyLevel" class="text-danger"></span>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i> Assignment
+            </h2>
+            <input type="hidden" asp-for="CreatedByUserId" />
+
+            <div class="form-group">
+                <label asp-for="AssignedToUserId" class="form-label">
+                    Assign To
+                </label>
+                <select asp-for="AssignedToUserId" class="form-control" asp-items="ViewBag.AssignedToUserId">
+                    <option value="">-- Unassigned --</option>
+                </select>
+                <span asp-validation-for="AssignedToUserId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i>
+                Create Ticket
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-times"></i>
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const slider = document.getElementById('urgencySlider');
+        const display = document.getElementById('urgencyDisplay');
+
+        const urgencyLevels = {
+            1: { name: 'Low', color: '#22c55e', bg: '#dcfce7' },
+            2: { name: 'Medium', color: '#eab308', bg: '#fef3c7' },
+            3: { name: 'High', color: '#f97316', bg: '#fed7aa' },
+            4: { name: 'Urgent', color: '#ef4444', bg: '#fee2e2' },
+            5: { name: 'Critical', color: '#dc2626', bg: '#fecaca' }
+        };
+
+        function updateUrgencyDisplay() {
+            const value = slider.value;
+            const level = urgencyLevels[value];
+            display.textContent = level.name;
+            display.style.backgroundColor = level.bg;
+            display.style.color = level.color;
+        }
+
+        slider.addEventListener('input', updateUrgencyDisplay);
+        updateUrgencyDisplay();
+    </script>
+}
