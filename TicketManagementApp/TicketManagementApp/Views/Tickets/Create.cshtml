@@ -1,4 +1,4 @@
-﻿@model TicketManagementApp.Models.Ticket
+﻿@* @model TicketManagementApp.Models.Ticket
 
 @{
     ViewData["Title"] = "Create Ticket";
@@ -545,6 +545,531 @@
             3: { name: 'High', color: '#f97316', bg: '#fed7aa' },
             4: { name: 'Urgent', color: '#ef4444', bg: '#fee2e2' },
             5: { name: 'Critical', color: '#dc2626', bg: '#fecaca' }
+        };
+
+        function updateUrgencyDisplay() {
+            const value = slider.value;
+            const level = urgencyLevels[value];
+            display.textContent = level.name;
+            display.style.backgroundColor = level.bg;
+            display.style.color = level.color;
+        }
+
+        slider.addEventListener('input', updateUrgencyDisplay);
+        updateUrgencyDisplay();
+    </script>
+} *@
+
+
+@model TicketManagementApp.Models.Ticket
+
+@{
+    ViewData["Title"] = "Create Ticket";
+}
+
+<style>
+    .page-header {
+        margin-bottom: 2rem;
+    }
+
+    .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #64748b;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+        .breadcrumb-nav a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+            .breadcrumb-nav a:hover {
+                color: #1e40af;
+            }
+
+    .page-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .form-card {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        padding: 2rem;
+        max-width: 800px;
+    }
+
+    .form-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 500;
+        color: #334155;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+        .form-label .required {
+            color: #dc2626;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 0.65rem 0.875rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        background: #f8fafc;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+    textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    .status-selector,
+    .category-selector {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 0.875rem;
+    }
+
+    .status-option,
+    .category-option {
+        position: relative;
+    }
+
+        .status-option input[type="radio"],
+        .category-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+    .status-label,
+    .category-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #f8fafc;
+    }
+
+    .status-option input:checked + .status-label,
+    .category-option input:checked + .category-label {
+        border-color: #2563eb;
+        background: #eff6ff;
+    }
+
+    .status-icon,
+    .category-icon {
+        font-size: 1.25rem;
+    }
+
+    .status-name,
+    .category-name {
+        font-weight: 500;
+        color: #0f172a;
+        font-size: 0.85rem;
+    }
+
+    .status-open .status-icon {
+        color: #3b82f6;
+    }
+
+    .status-inprogress .status-icon {
+        color: #f59e0b;
+    }
+
+    .status-resolved .status-icon {
+        color: #10b981;
+    }
+
+    .status-closed .status-icon {
+        color: #6b7280;
+    }
+
+    .category-bug .category-icon {
+        color: #dc2626;
+    }
+
+    .category-improvement .category-icon {
+        color: #2563eb;
+    }
+
+    .category-access .category-icon {
+        color: #d97706;
+    }
+
+    .category-feature .category-icon {
+        color: #9333ea;
+    }
+
+    .urgency-slider-container {
+        padding: 1rem 0;
+    }
+
+    .urgency-display {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.875rem;
+    }
+
+    .urgency-label {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    .urgency-level {
+        padding: 0.375rem 0.75rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .slider-track {
+        position: relative;
+        height: 32px;
+        background: linear-gradient(to right, #22c55e 0%, #eab308 25%, #f97316 50%, #ef4444 75%, #dc2626 100%);
+        border-radius: 16px;
+        margin-bottom: 0.5rem;
+    }
+
+    .urgency-slider {
+        position: absolute;
+        width: 100%;
+        height: 32px;
+        top: 0;
+        left: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        outline: none;
+        margin: 0;
+        cursor: pointer;
+    }
+
+        .urgency-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+            .urgency-slider::-webkit-slider-thumb:hover {
+                transform: scale(1.1);
+            }
+
+        .urgency-slider::-moz-range-thumb {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+    .urgency-markers {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+        font-size: 0.7rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 0.875rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .btn {
+        padding: 0.75rem 1.75rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+    .btn-secondary {
+        background: #f1f5f9;
+        color: #64748b;
+        border: 1px solid #e2e8f0;
+    }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+    .text-danger {
+        color: #dc2626;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        display: block;
+    }
+
+    .alert-danger {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #dc2626;
+        padding: 0.875rem;
+        border-radius: 6px;
+        margin-bottom: 1.25rem;
+        font-size: 0.85rem;
+    }
+</style>
+
+<div class="page-header">
+    <nav class="breadcrumb-nav">
+        <a asp-action="Index">
+            <i class="fas fa-ticket-alt"></i> Tickets
+        </a>
+        <span>/</span>
+        <span>Créer</span>
+    </nav>
+    <h1 class="page-title">
+        <i class="fas fa-plus-circle"></i>
+        Créer un nouveau ticket
+    </h1>
+</div>
+
+<div class="form-card">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert-danger"></div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle"></i> Informations du ticket
+            </h2>
+
+            <div class="form-group">
+                <label asp-for="Title" class="form-label">
+                    Titre <span class="required">*</span>
+                </label>
+                <input asp-for="Title" class="form-control" placeholder="Entrez le titre du ticket..." />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="form-label">
+                    Description
+                </label>
+                <textarea asp-for="Description" class="form-control" placeholder="Décrivez le problème ou la demande en détail..."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle"></i> Statut
+            </h2>
+            <div class="status-selector">
+                <div class="status-option status-open">
+                    <input type="radio" asp-for="Status" value="Open" id="status-open" checked />
+                    <label for="status-open" class="status-label">
+                        <i class="fas fa-folder-open status-icon"></i>
+                        <span class="status-name">Ouvert</span>
+                    </label>
+                </div>
+                <div class="status-option status-inprogress">
+                    <input type="radio" asp-for="Status" value="InProgress" id="status-inprogress" />
+                    <label for="status-inprogress" class="status-label">
+                        <i class="fas fa-spinner status-icon"></i>
+                        <span class="status-name">En cours</span>
+                    </label>
+                </div>
+                <div class="status-option status-resolved">
+                    <input type="radio" asp-for="Status" value="Resolved" id="status-resolved" />
+                    <label for="status-resolved" class="status-label">
+                        <i class="fas fa-check-circle status-icon"></i>
+                        <span class="status-name">Résolu</span>
+                    </label>
+                </div>
+                <div class="status-option status-closed">
+                    <input type="radio" asp-for="Status" value="Closed" id="status-closed" />
+                    <label for="status-closed" class="status-label">
+                        <i class="fas fa-times-circle status-icon"></i>
+                        <span class="status-name">Fermé</span>
+                    </label>
+                </div>
+            </div>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-tag"></i> Catégorie
+            </h2>
+            <div class="category-selector">
+                <div class="category-option category-bug">
+                    <input type="radio" asp-for="Category" value="Bug" id="cat-bug" />
+                    <label for="cat-bug" class="category-label">
+                        <i class="fas fa-bug category-icon"></i>
+                        <span class="category-name">Bug</span>
+                    </label>
+                </div>
+                <div class="category-option category-improvement">
+                    <input type="radio" asp-for="Category" value="Improvement" id="cat-improvement" />
+                    <label for="cat-improvement" class="category-label">
+                        <i class="fas fa-arrow-up category-icon"></i>
+                        <span class="category-name">Amélioration</span>
+                    </label>
+                </div>
+                <div class="category-option category-access">
+                    <input type="radio" asp-for="Category" value="Access" id="cat-access" />
+                    <label for="cat-access" class="category-label">
+                        <i class="fas fa-key category-icon"></i>
+                        <span class="category-name">Accès</span>
+                    </label>
+                </div>
+                <div class="category-option category-feature">
+                    <input type="radio" asp-for="Category" value="Feature" id="cat-feature" />
+                    <label for="cat-feature" class="category-label">
+                        <i class="fas fa-star category-icon"></i>
+                        <span class="category-name">Fonctionnalité</span>
+                    </label>
+                </div>
+            </div>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-exclamation-triangle"></i> Niveau d'urgence
+            </h2>
+            <div class="urgency-slider-container">
+                <div class="urgency-display">
+                    <span class="urgency-label">Priorité :</span>
+                    <span class="urgency-level" id="urgencyDisplay">Faible</span>
+                </div>
+                <div class="slider-track">
+                    <input type="range" asp-for="UrgencyLevel" class="urgency-slider" id="urgencySlider"
+                           min="1" max="5" value="1" step="1" />
+                </div>
+                <div class="urgency-markers">
+                    <span>Faible</span>
+                    <span>Moyen</span>
+                    <span>Élevé</span>
+                    <span>Urgent</span>
+                    <span>Critique</span>
+                </div>
+            </div>
+            <span asp-validation-for="UrgencyLevel" class="text-danger"></span>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i> Attribution
+            </h2>
+            <input type="hidden" asp-for="CreatedByUserId" />
+
+            <div class="form-group">
+                <label asp-for="AssignedToUserId" class="form-label">
+                    Assigner à
+                </label>
+                <select asp-for="AssignedToUserId" class="form-control" asp-items="ViewBag.AssignedToUserId">
+                    <option value="">-- Non assigné --</option>
+                </select>
+                <span asp-validation-for="AssignedToUserId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i>
+                Créer le ticket
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-times"></i>
+                Annuler
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const slider = document.getElementById('urgencySlider');
+        const display = document.getElementById('urgencyDisplay');
+
+        const urgencyLevels = {
+            1: { name: 'Faible', color: '#22c55e', bg: '#dcfce7' },
+            2: { name: 'Moyen', color: '#eab308', bg: '#fef3c7' },
+            3: { name: 'Élevé', color: '#f97316', bg: '#fed7aa' },
+            4: { name: 'Urgent', color: '#ef4444', bg: '#fee2e2' },
+            5: { name: 'Critique', color: '#dc2626', bg: '#fecaca' }
         };
 
         function updateUrgencyDisplay() {

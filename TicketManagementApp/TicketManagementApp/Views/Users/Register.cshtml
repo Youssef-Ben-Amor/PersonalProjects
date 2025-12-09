@@ -21,7 +21,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -31,73 +31,79 @@
 
         .register-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 100%;
+            padding: 0 2rem;
         }
 
         .register-card {
             background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            animation: slideUp 0.5s ease-out;
-        }
-
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .register-header {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            padding: 3rem 2rem 2rem;
+            background: white;
+            padding: 2rem 2rem 1.5rem;
             text-align: center;
-            color: white;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .register-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            width: 64px;
+            height: 64px;
+            background: #eff6ff;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+            color: #2563eb;
         }
 
         .register-title {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: #0f172a;
         }
 
         .register-subtitle {
-            font-size: 1rem;
-            opacity: 0.95;
+            font-size: 0.9rem;
+            color: #64748b;
         }
 
         .register-body {
-            padding: 2.5rem 2rem;
+            padding: 2rem;
+        }
+
+        .form-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-label {
             display: block;
-            font-weight: 600;
+            font-weight: 500;
             color: #334155;
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
             .form-label .required {
-                color: #ef4444;
+                color: #dc2626;
             }
 
         .input-wrapper {
@@ -106,28 +112,28 @@
 
         .input-icon {
             position: absolute;
-            left: 1rem;
+            left: 0.875rem;
             top: 50%;
             transform: translateY(-50%);
             color: #94a3b8;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 0.875rem 1rem 0.875rem 3rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            padding: 0.75rem 0.875rem 0.75rem 2.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
             background: #f8fafc;
         }
 
             .form-control:focus {
                 outline: none;
-                border-color: #6366f1;
+                border-color: #2563eb;
                 background: white;
-                box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+                box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
             }
 
             .form-control::placeholder {
@@ -136,11 +142,11 @@
 
         .password-strength {
             margin-top: 0.5rem;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
 
         .strength-bar {
-            height: 4px;
+            height: 3px;
             background: #e2e8f0;
             border-radius: 2px;
             overflow: hidden;
@@ -176,16 +182,15 @@
 
         .btn-register {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 0.875rem;
+            background: #2563eb;
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -193,19 +198,18 @@
         }
 
             .btn-register:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+                background: #1e40af;
             }
 
             .btn-register:active {
-                transform: translateY(0);
+                transform: scale(0.98);
             }
 
         .divider {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
         .divider-line {
@@ -216,63 +220,62 @@
 
         .divider-text {
             color: #94a3b8;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
         .login-prompt {
             background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
             text-align: center;
         }
 
         .login-text {
             color: #64748b;
             margin-bottom: 0.75rem;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
         .btn-login {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
+            padding: 0.625rem 1.25rem;
             background: white;
-            color: #6366f1;
-            border: 2px solid #6366f1;
-            border-radius: 10px;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
         }
 
             .btn-login:hover {
-                background: #6366f1;
+                background: #2563eb;
                 color: white;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
             }
 
         .alert {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
+            padding: 0.875rem;
+            border-radius: 6px;
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: start;
             gap: 0.75rem;
+            font-size: 0.85rem;
         }
 
         .alert-danger {
-            background: #fee2e2;
-            border: 2px solid #fca5a5;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
             color: #dc2626;
         }
 
         .alert-icon {
-            font-size: 1.25rem;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
@@ -281,8 +284,8 @@
         }
 
         .text-danger {
-            color: #ef4444;
-            font-size: 0.875rem;
+            color: #dc2626;
+            font-size: 0.8rem;
             margin-top: 0.25rem;
             display: block;
         }
@@ -298,11 +301,11 @@
 
         .password-requirements {
             background: #eff6ff;
-            border: 2px solid #bfdbfe;
-            border-radius: 10px;
-            padding: 1rem;
+            border: 1px solid #bfdbfe;
+            border-radius: 6px;
+            padding: 0.875rem;
             margin-top: 1rem;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
         }
 
         .requirements-title {
@@ -320,7 +323,7 @@
         }
 
             .requirements-list li {
-                padding-left: 1.5rem;
+                padding-left: 1.25rem;
                 position: relative;
                 margin-bottom: 0.25rem;
             }
@@ -334,16 +337,24 @@
 
 
 
+        .form-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group-full {
+            grid-column: 1;
+        }
+
         .register-header {
             padding: 2rem 1.5rem 1.5rem;
         }
 
         .register-body {
-            padding: 2rem 1.5rem;
+            padding: 1.5rem;
         }
 
         .register-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
 
         }
@@ -356,8 +367,8 @@
                 <div class="register-icon">
                     <i class="fas fa-user-plus"></i>
                 </div>
-                <h1 class="register-title">Create Account</h1>
-                <p class="register-subtitle">Join us and start managing tickets</p>
+                <h1 class="register-title">Créer un compte</h1>
+                <p class="register-subtitle">Rejoignez-nous pour gérer vos tickets</p>
             </div>
 
             <div class="register-body">
@@ -365,93 +376,98 @@
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger">
                         <i class="fas fa-exclamation-circle alert-icon"></i>
                         <div class="alert-content">
-                            <strong>Registration failed!</strong>
+                            <strong>Échec de l'inscription</strong>
                             <ul class="validation-summary"></ul>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label asp-for="FullName" class="form-label">
-                            Full Name <span class="required">*</span>
-                        </label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-user input-icon"></i>
-                            <input asp-for="FullName" class="form-control" placeholder="John Doe" />
-                        </div>
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Email" class="form-label">
-                            Email Address <span class="required">*</span>
-                        </label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-envelope input-icon"></i>
-                            <input asp-for="Email" class="form-control" placeholder="your@email.com" />
-                        </div>
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Password" class="form-label">
-                            Password <span class="required">*</span>
-                        </label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-lock input-icon"></i>
-                            <input asp-for="Password" class="form-control" placeholder="Create a strong password" id="password" />
-                        </div>
-                        <div class="password-strength">
-                            <div class="strength-bar">
-                                <div class="strength-fill" id="strengthBar"></div>
+                    <div class="form-layout">
+                        <div class="form-group">
+                            <label asp-for="FullName" class="form-label">
+                                Nom complet <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input asp-for="FullName" class="form-control" placeholder="Jean Dupont" />
                             </div>
-                            <div class="strength-text" id="strengthText">Enter a password</div>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
 
-                    <div class="form-group">
-                        <label asp-for="ConfirmPassword" class="form-label">
-                            Confirm Password <span class="required">*</span>
-                        </label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-lock input-icon"></i>
-                            <input asp-for="ConfirmPassword" class="form-control" placeholder="Re-enter your password" />
+                        <div class="form-group">
+                            <label asp-for="Email" class="form-label">
+                                Adresse e-mail <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input asp-for="Email" class="form-control" placeholder="votre@email.com" />
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
 
-                    <div class="password-requirements">
-                        <div class="requirements-title">
-                            <i class="fas fa-shield-alt"></i>
-                            Password Requirements:
+                        <div class="form-group">
+                            <label asp-for="Password" class="form-label">
+                                Mot de passe <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input asp-for="Password" class="form-control" placeholder="Créer un mot de passe" id="password" />
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthBar"></div>
+                                </div>
+                                <div class="strength-text" id="strengthText">Entrez un mot de passe</div>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
-                        <ul class="requirements-list">
-                            <li>At least 6 characters long</li>
-                            <li>Mix of letters and numbers recommended</li>
-                            <li>Avoid common passwords</li>
-                        </ul>
-                    </div>
 
-                    <button type="submit" class="btn-register">
-                        <i class="fas fa-user-check"></i>
-                        Create My Account
-                    </button>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="form-label">
+                                Confirmer le mot de passe <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirmer votre mot de passe" />
+                            </div>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group-full">
+                            <div class="password-requirements">
+                                <div class="requirements-title">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Exigences du mot de passe :
+                                </div>
+                                <ul class="requirements-list">
+                                    <li>Au moins 6 caractères</li>
+                                    <li>Mélange de lettres et chiffres recommandé</li>
+                                    <li>Évitez les mots de passe courants</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group-full">
+                            <button type="submit" class="btn-register">
+                                <i class="fas fa-user-check"></i>
+                                Créer mon compte
+                            </button>
+                        </div>
+                    </div>
                 </form>
 
                 <div class="divider">
                     <div class="divider-line"></div>
-                    <span class="divider-text">Already have an account?</span>
+                    <span class="divider-text">Déjà inscrit ?</span>
                     <div class="divider-line"></div>
                 </div>
 
                 <div class="login-prompt">
                     <p class="login-text">
-                        <i class="fas fa-sign-in-alt"></i>
-                        Ready to sign in?
+                        Vous avez déjà un compte ?
                     </p>
                     <a asp-action="Login" asp-controller="Users" class="btn-login">
                         <i class="fas fa-sign-in-alt"></i>
-                        Sign In Instead
+                        Se connecter
                     </a>
                 </div>
             </div>
@@ -463,7 +479,6 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     <script>
-        // Password strength indicator
         const passwordInput = document.getElementById('password');
         const strengthBar = document.getElementById('strengthBar');
         const strengthText = document.getElementById('strengthText');
@@ -475,7 +490,7 @@
 
                 if (password.length === 0) {
                     strengthBar.className = 'strength-fill';
-                    strengthText.textContent = 'Enter a password';
+                    strengthText.textContent = 'Entrez un mot de passe';
                     return;
                 }
 
@@ -487,15 +502,15 @@
 
                 if (strength <= 2) {
                     strengthBar.className = 'strength-fill strength-weak';
-                    strengthText.textContent = 'Weak password';
+                    strengthText.textContent = 'Mot de passe faible';
                     strengthText.style.color = '#ef4444';
                 } else if (strength <= 3) {
                     strengthBar.className = 'strength-fill strength-medium';
-                    strengthText.textContent = 'Medium strength';
+                    strengthText.textContent = 'Force moyenne';
                     strengthText.style.color = '#f59e0b';
                 } else {
                     strengthBar.className = 'strength-fill strength-strong';
-                    strengthText.textContent = 'Strong password';
+                    strengthText.textContent = 'Mot de passe fort';
                     strengthText.style.color = '#10b981';
                 }
             });

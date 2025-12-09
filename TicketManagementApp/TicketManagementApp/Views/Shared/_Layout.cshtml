@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #8b5cf6;
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #64748b;
             --bg-light: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
+            --bg-white: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
             --border-color: #e2e8f0;
-            --sidebar-width: 280px;
-            --header-height: 70px;
+            --sidebar-width: 260px;
+            --header-height: 64px;
+            --accent-color: #0ea5e9;
         }
 
         * {
@@ -31,17 +33,18 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-light);
             color: var(--text-primary);
+            font-size: 14px;
         }
 
-        /* Header Moderne */
+        /* Header Professionnel */
         .modern-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: var(--header-height);
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -49,7 +52,7 @@
         }
 
         .fa-user {
-            color: white;
+            color: var(--text-secondary);
         }
 
         .header-content {
@@ -64,24 +67,25 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .menu-toggle {
             display: none;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
             .menu-toggle:hover {
-                background: rgba(255, 255, 255, 0.3);
-                transform: scale(1.05);
+                background: var(--bg-light);
+                border-color: var(--primary-color);
+                color: var(--primary-color);
             }
 
         .dashboard-title {
@@ -91,16 +95,16 @@
         }
 
             .dashboard-title i {
-                font-size: 1.5rem;
-                color: white;
+                font-size: 1.25rem;
+                color: var(--primary-color);
             }
 
             .dashboard-title h1 {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: white;
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--text-primary);
                 margin: 0;
-                letter-spacing: -0.5px;
+                letter-spacing: -0.3px;
             }
 
         .header-right {
@@ -115,23 +119,25 @@
         }
 
             .search-box input {
-                background: rgba(255, 255, 255, 0.2);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                border-radius: 10px;
+                background: var(--bg-light);
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
                 padding: 0.5rem 1rem 0.5rem 2.5rem;
-                color: white;
-                width: 250px;
-                transition: all 0.3s ease;
+                color: var(--text-primary);
+                width: 240px;
+                transition: all 0.2s ease;
+                font-size: 14px;
             }
 
                 .search-box input::placeholder {
-                    color: rgba(255, 255, 255, 0.7);
+                    color: var(--text-secondary);
                 }
 
                 .search-box input:focus {
                     outline: none;
-                    background: rgba(255, 255, 255, 0.3);
-                    width: 300px;
+                    border-color: var(--primary-color);
+                    background: var(--bg-white);
+                    width: 280px;
                 }
 
             .search-box i {
@@ -139,7 +145,8 @@
                 left: 0.75rem;
                 top: 50%;
                 transform: translateY(-50%);
-                color: rgba(255, 255, 255, 0.8);
+                color: var(--text-secondary);
+                font-size: 14px;
             }
 
         .header-actions {
@@ -148,70 +155,73 @@
         }
 
         .header-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            font-size: 16px;
         }
 
             .header-btn:hover {
-                background: rgba(255, 255, 255, 0.3);
-                transform: translateY(-2px);
+                background: var(--bg-light);
+                border-color: var(--primary-color);
+                color: var(--primary-color);
             }
 
         .notification-badge {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            background: #ef4444;
+            top: 4px;
+            right: 4px;
+            background: #dc2626;
             color: white;
-            font-size: 0.65rem;
-            width: 18px;
-            height: 18px;
+            font-size: 0.6rem;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
+            border: 2px solid white;
         }
 
         .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            color: var(--primary-color);
+            color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            font-size: 14px;
         }
 
             .user-avatar:hover {
-                transform: scale(1.05);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                background: var(--primary-dark);
             }
 
-        /* Sidebar Moderne */
+        /* Sidebar Professionnel */
         .modern-sidebar {
             position: fixed;
             left: 0;
             top: var(--header-height);
             width: var(--sidebar-width);
             height: calc(100vh - var(--header-height));
-            background: white;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
-            padding: 2rem 0;
+            background: var(--bg-white);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 0;
             overflow-y: auto;
             transition: all 0.3s ease;
             z-index: 900;
@@ -223,40 +233,42 @@
         }
 
         .nav-section-title {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 1.5rem 0 0.75rem 1rem;
+            letter-spacing: 0.8px;
+            margin: 1.5rem 0 0.75rem 0.75rem;
         }
 
         .nav-item-link {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 1rem;
+            padding: 0.65rem 0.75rem;
             color: var(--text-secondary);
             text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            transition: all 0.2s ease;
             margin-bottom: 0.25rem;
+            font-size: 14px;
+            font-weight: 500;
         }
 
             .nav-item-link:hover {
                 background: var(--bg-light);
                 color: var(--primary-color);
-                transform: translateX(5px);
             }
 
             .nav-item-link.active {
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-                color: white;
+                background: #eff6ff;
+                color: var(--primary-color);
+                font-weight: 600;
             }
 
             .nav-item-link i {
-                font-size: 1.1rem;
-                width: 20px;
+                font-size: 1rem;
+                width: 18px;
                 text-align: center;
             }
 
@@ -264,9 +276,9 @@
             margin-left: auto;
             background: var(--primary-color);
             color: white;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 6px;
+            font-size: 0.65rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
             font-weight: 600;
         }
 
@@ -283,11 +295,11 @@
             margin: 0 auto;
         }
 
-        /* Footer Moderne */
+        /* Footer Professionnel */
         .modern-footer {
-            background: white;
+            background: var(--bg-white);
             border-top: 1px solid var(--border-color);
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 2rem;
             margin-left: var(--sidebar-width);
             margin-top: 3rem;
         }
@@ -299,7 +311,7 @@
             justify-content: space-between;
             align-items: center;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-links {
@@ -310,18 +322,16 @@
             .footer-links a {
                 color: var(--text-secondary);
                 text-decoration: none;
-                transition: color 0.3s ease;
+                transition: color 0.2s ease;
             }
 
                 .footer-links a:hover {
                     color: var(--primary-color);
                 }
 
-
-
-        /* Scrollbar personnalisée */
+        /* Scrollbar */
         .modern-sidebar::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         .modern-sidebar::-webkit-scrollbar-track {
@@ -336,10 +346,29 @@
             .modern-sidebar::-webkit-scrollbar-thumb:hover {
                 background: var(--text-secondary);
             }
+
+
+        .modern-sidebar {
+            transform: translateX(-100%);
+        }
+
+            .modern-sidebar.active {
+                transform: translateX(0);
+            }
+
+        .main-content {
+            margin-left: 0;
+        }
+
+        .modern-footer {
+            margin-left: 0;
+        }
+
+        }
     </style>
 </head>
 <body>
-    <!-- Header Moderne -->
+    <!-- Header -->
     <header class="modern-header">
         <div class="header-content">
             <div class="header-left">
@@ -355,38 +384,25 @@
             <div class="header-right">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
+                    <input type="text" placeholder="Rechercher...">
                 </div>
 
                 <div class="header-actions">
-                    <button class="header-btn">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
                     <a asp-controller="Users" asp-action="Profil">
-                    <boutton class="header-btn">
-                        
+                        <button class="header-btn">
                             <i class="fas fa-user"></i>
-
-
-                        </boutton>
+                        </button>
                     </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Sidebar Moderne -->
+    <!-- Sidebar -->
     <aside class="modern-sidebar" id="sidebar">
         <nav>
             <ul class="sidebar-nav">
-                <div class="nav-section-title">Main Menu</div>
-                @* <li>
-                    <a class="nav-item-link active" asp-area="" asp-page="/Index">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                </li> *@
+                <div class="nav-section-title">Menu Principal</div>
                 <li>
                     <a class="nav-item-link" asp-controller="Tickets" asp-action="Index">
                         <i class="fas fa-ticket-alt"></i>
@@ -396,27 +412,27 @@
                 <li>
                     <a class="nav-item-link" href="#">
                         <i class="fas fa-chart-bar"></i>
-                        <span>Analytics</span>
+                        <span>Analyses</span>
                     </a>
                 </li>
 
-                <div class="nav-section-title">Settings</div>
+                <div class="nav-section-title">Paramètres</div>
                 <li>
                     <a class="nav-item-link" href="#">
                         <i class="fas fa-cog"></i>
-                        <span>Settings</span>
+                        <span>Configuration</span>
                     </a>
                 </li>
                 <li>
                     <a class="nav-item-link" asp-area="" asp-page="/Privacy">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Privacy</span>
+                        <span>Confidentialité</span>
                     </a>
                 </li>
                 <li>
                     <a class="nav-item-link" href="#">
                         <i class="fas fa-question-circle"></i>
-                        <span>Help</span>
+                        <span>Aide</span>
                     </a>
                 </li>
             </ul>
@@ -432,13 +448,13 @@
         </div>
     </div>
 
-    <!-- Footer Moderne -->
+    <!-- Footer -->
     <footer class="modern-footer">
         <div class="footer-content">
-            <div>&copy; 2025 TicketManagementApp. All rights reserved.</div>
+            <div>&copy; 2025 TicketManagementApp. Tous droits réservés.</div>
             <div class="footer-links">
-                <a asp-area="" asp-page="/Privacy">Privacy</a>
-                <a href="#">Terms</a>
+                <a asp-area="" asp-page="/Privacy">Confidentialité</a>
+                <a href="#">Conditions</a>
                 <a href="#">Support</a>
             </div>
         </div>
@@ -449,7 +465,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script>
-        // Toggle sidebar sur mobile
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
 
@@ -457,7 +472,6 @@
             sidebar.classList.toggle('active');
         });
 
-        // Fermer la sidebar en cliquant en dehors sur mobile
         document.addEventListener('click', function(event) {
             if (window.innerWidth <= 992) {
                 if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {

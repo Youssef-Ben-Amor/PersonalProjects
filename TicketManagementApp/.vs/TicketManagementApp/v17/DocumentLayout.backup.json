@@ -3,28 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\controllers\\ticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\controllers\\ticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\services\\iticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\services\\iticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\users\\profil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\users\\profil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\tickets\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\tickets\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|c:\\users\\moham\\source\\repos\\personalprojects\\ticketmanagementapp\\ticketmanagementapp\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A16400D6-78AF-4D2F-B995-05CFDB58BA11}|TicketManagementApp\\TicketManagementApp.csproj|solutionrelative:ticketmanagementapp\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +66,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Program.cs",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Program.cs",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Program.cs*",
+              "RelativeToolTip": "TicketManagementApp\\Program.cs*",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAcwJwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T00:58:58.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "TicketManagementApp\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAwwGQBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T00:57:40.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ITicketService.cs",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Services\\ITicketService.cs",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Services\\ITicketService.cs",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Services\\ITicketService.cs",
+              "RelativeToolTip": "TicketManagementApp\\Services\\ITicketService.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAA3wP4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T00:57:00.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Profil.cshtml",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Users\\Profil.cshtml",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Users\\Profil.cshtml",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Users\\Profil.cshtml",
+              "RelativeToolTip": "TicketManagementApp\\Views\\Users\\Profil.cshtml",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAAAJ4BAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T00:23:46.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Users\\Register.cshtml",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Users\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Users\\Register.cshtml",
+              "RelativeToolTip": "TicketManagementApp\\Views\\Users\\Register.cshtml",
+              "ViewState": "AgIAAEQBAAAAAAAAAAAowFEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T00:23:08.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Edit.cshtml",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Tickets\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Edit.cshtml",
+              "RelativeToolTip": "TicketManagementApp\\Views\\Tickets\\Edit.cshtml",
+              "ViewState": "AgIAADABAAAAAAAAAAAAADMCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T00:21:19.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Users\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "TicketManagementApp\\Views\\Users\\Login.cshtml",
+              "ViewState": "AgIAAPQAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T00:00:24.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TicketManagementApp\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAHoBAAAAAAAAAADgv4UBAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T23:52:01.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "SeedData.cs",
               "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Data\\SeedData.cs",
               "RelativeDocumentMoniker": "TicketManagementApp\\Data\\SeedData.cs",
@@ -46,34 +178,31 @@
               "RelativeToolTip": "TicketManagementApp\\Data\\SeedData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T01:37:19.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T01:37:19.329Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Create.cshtml",
               "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Tickets\\Create.cshtml",
               "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Create.cshtml",
               "RelativeToolTip": "TicketManagementApp\\Views\\Tickets\\Create.cshtml",
-              "ViewState": "AgIAAPoBAAAAAAAAAAAAAAICAAASAAAAAAAAAA==",
+              "ViewState": "AgIAACQEAAAAAAAAAADwvz0EAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T01:31:24.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T01:31:24.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Index.cshtml",
               "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Tickets\\Index.cshtml",
               "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Index.cshtml",
               "RelativeToolTip": "TicketManagementApp\\Views\\Tickets\\Index.cshtml",
-              "ViewState": "AgIAACkBAAAAAAAAAAAAADgBAABhAAAAAAAAAA==",
+              "ViewState": "AgIAAMYCAAAAAAAAAAAcwIQCAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T01:25:58.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T01:25:58.098Z"
             },
             {
               "$type": "Document",
@@ -83,33 +212,31 @@
               "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Tickets\\Details.cshtml",
               "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Details.cshtml",
               "RelativeToolTip": "TicketManagementApp\\Views\\Tickets\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoCAAAAAAAAAAAAABACAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T01:20:55.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T01:20:55.149Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Delete.cshtml",
               "RelativeDocumentMoniker": "TicketManagementApp\\Views\\Tickets\\Delete.cshtml",
               "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Views\\Tickets\\Delete.cshtml",
               "RelativeToolTip": "TicketManagementApp\\Views\\Tickets\\Delete.cshtml",
-              "ViewState": "AgIAAI0DAAAAAAAAAAAqwLcDAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAADQBAAAAAAAAAAAAADoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T01:20:46.965Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T01:20:46.965Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TicketsController.cs",
               "DocumentMoniker": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Controllers\\TicketsController.cs",
               "RelativeDocumentMoniker": "TicketManagementApp\\Controllers\\TicketsController.cs",
               "ToolTip": "C:\\Users\\Moham\\source\\repos\\PersonalProjects\\TicketManagementApp\\TicketManagementApp\\Controllers\\TicketsController.cs",
               "RelativeToolTip": "TicketManagementApp\\Controllers\\TicketsController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAkwBsAAABMAAAAAAAAAA==",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAowHgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-08T01:20:04.101Z",
               "EditorCaption": ""
