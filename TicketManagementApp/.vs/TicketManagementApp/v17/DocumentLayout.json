@@ -91,8 +91,7 @@
               "RelativeToolTip": "TicketManagementApp\\Controllers\\UsersController.cs",
               "ViewState": "AgIAAJsAAAAAAAAAAAAwwGQBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T00:57:40.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-09T00:57:40.556Z"
             },
             {
               "$type": "Document",
@@ -104,8 +103,7 @@
               "RelativeToolTip": "TicketManagementApp\\Services\\ITicketService.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAA3wP4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T00:57:00.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-09T00:57:00.61Z"
             },
             {
               "$type": "Document",
@@ -165,8 +163,7 @@
               "RelativeToolTip": "TicketManagementApp\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAHoBAAAAAAAAAADgv4UBAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T23:52:01.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T23:52:01.04Z"
             },
             {
               "$type": "Document",
@@ -238,8 +235,7 @@
               "RelativeToolTip": "TicketManagementApp\\Controllers\\TicketsController.cs",
               "ViewState": "AgIAAMoAAAAAAAAAAAAowHgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T01:20:04.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T01:20:04.101Z"
             }
           ]
         }
